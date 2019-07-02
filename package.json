@@ -1,0 +1,61 @@
+{
+  "name": "reactnative-redux-boilerplate",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "lint": "yarn run lint:js",
+    "lint:js": "eslint \"./**/*.js\" --cache",
+    "lint:fix": "yarn run lint -- --fix",
+    "eslint": "node ./node_modules/eslint/bin/eslint.js . --ext .js",
+    "eslint-fix": "node ./node_modules/eslint/bin/eslint.js . --fix --ext .js",
+    "clear": "watchman watch-del-all && rm -rf node_modules/ && yarn cache clean && yarn install && yarn start -- --reset-cache",
+    "clear-pods": "pod cache clean --all;rm -rf ~/Library/Caches/CocoaPods; rm -rf Pods; rm -rf ~/Library/Developer/Xcode/DerivedData/*; pod deintegrate; pod setup; pod install;",
+    "android-make-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "android-build": "yarn run android-make-bundle && react-native run-android"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint"
+    }
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/"
+    ]
+  },
+  "dependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-native": "^3.7.0",
+    "prop-types": "^15.7.2",
+    "react": "16.8.3",
+    "react-native": "0.59.9",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "remote-redux-devtools": "^0.5.16"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "babel-preset-react-native": "^4.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "prettier": "^1.18.2",
+    "react-test-renderer": "^16.8.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
